@@ -243,9 +243,11 @@ $ hadoop fs -cat /tmp/h.har/_index
 ```
 
 ## Communicate with HDFS
-command line client: hadoop hdfs
+There are 3 ways to communicate with HDFS. Each method serves different use cases depending on whether you need interactive command line access, programmatic access within a Java application, or networked access via HTTP.
 
-Java API
-- FileSystem, FSDataInputStream, FSDataOuputStream
-- HTTP: WebHDFS
+- **Command Line Client:** Use `hadoop hdfs` commands for quick, manual file system operations from the command line.
+- **Java API:** Utilize the `FileSystem`, `FSDataInputStream`, and `FSDataOutputStream` classes for programmatic access to HDFS within Java applications.
+- **WebHDFS:** Use HTTP REST API for interacting with HDFS from non-Java applications or over the network using standard HTTP methods.
+
+
 
