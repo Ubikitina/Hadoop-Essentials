@@ -1,0 +1,1 @@
+This is my first exercise of the course "Parallel Processing Ecosystem for Massive Data"
