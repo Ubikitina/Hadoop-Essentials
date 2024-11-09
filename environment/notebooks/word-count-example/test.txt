@@ -1,0 +1,2 @@
+this file is a word counter test
+words will be counted according to their number of occurrences in this file

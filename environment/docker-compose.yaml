@@ -1,0 +1,76 @@
+services:
+  namenode:
+    image: vega90/hadoop-namenode:1.0
+    container_name: namenode
+    hostname: namenode
+    command: bash -c /etc/start.sh
+    networks: 
+      hadoop:
+         ipv4_address: 172.18.0.2
+    ports:
+      - 9000:9000 # namenode
+      - 9870:9870 # hadoop
+      - 8888:8888 # jupyter
+      - 10000:10000 # hive
+      - 10002:10002 # hiveServer2
+      - 41414:41414 # avro
+    volumes: 
+      - C:\Users\maial\Documents\GitHub\Hadoop-Essentials\environment\notebooks:/media/notebooks
+    tty: true
+    stdin_open: true
+
+  yarnmanager:
+    image: vega90/hadoop-yarn:1.0
+    container_name: yarnmanager
+    hostname: yarnmanager
+    networks: 
+      hadoop:
+        ipv4_address: 172.18.0.3
+    ports:
+      - 8088:8088 # Resource Manager
+      - 19888:19888 # JobHistory
+
+  datanode1:
+    image: vega90/hadoop-datanode:1.0
+    container_name: datanode1
+    hostname: datanode1
+    networks: 
+      hadoop:
+        ipv4_address: 172.18.0.4
+    ports:
+      - 50020:50020
+      - 50021:50075
+      - 8042:8042
+      - 9864:9864
+      - 9866:9866
+
+  datanode2:
+    image: vega90/hadoop-datanode:1.0
+    container_name: datanode2
+    hostname: datanode2
+    networks: 
+      hadoop:
+        ipv4_address: 172.18.0.5
+
+  datanode3:
+    image: vega90/hadoop-datanode:1.0
+    container_name: datanode3
+    hostname: datanode3
+    networks: 
+      hadoop:
+        ipv4_address: 172.18.0.6
+
+  datanode4:
+    image: vega90/hadoop-datanode:1.0
+    container_name: datanode4
+    hostname: datanode4
+    networks: 
+      hadoop:
+        ipv4_address: 172.18.0.7
+
+networks:
+  hadoop:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16 # ip estaticas
