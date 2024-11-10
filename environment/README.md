@@ -22,8 +22,6 @@ This folder contains a complete working environment. Once deployed, no further i
     - [Job History MapReduce](#job-history-mapreduce)
     - [Yarn Manager](#yarn-manager)
     - [Hive CLI](#hive-cli)
-  - [Creating an External Table in Hive](#creating-an-external-table-in-hive)
-    - [Creating External Table `STARS`](#creating-external-table-stars)
 
 
 ## Environment Overview
@@ -333,11 +331,7 @@ This will open the Hive query editor. From here, we can run various commands to 
 show tables;
 ```
 
-## Creating an External Table in Hive
-
-Now, let's open **Beeline** and execute the query to create our first table in Hive:
-
-### Creating External Table `STARS`
+Execute the query to create our first external table in Hive:
 
 ```sql
 CREATE EXTERNAL TABLE stars(
@@ -350,7 +344,7 @@ CREATE EXTERNAL TABLE stars(
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION '/ejemplo-hive/'
+LOCATION '/hive-example/'
 TBLPROPERTIES ("skip.header.line.count"="1");
 ```
 
@@ -370,7 +364,7 @@ To get a description of the fields in the table, execute:
 describe stars;
 ```
 
-Finally, we will drop the table as we will recreate it in the next section using **Jupyter Notebooks**. To drop the table, execute:
+Finally, we will drop the table:
 
 ```sql
 drop table stars;
